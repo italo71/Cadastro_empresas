@@ -100,10 +100,11 @@
             text-decoration: none;
         }
 
-        #importacao_eventos option{
+        #importacao_eventos option {
             font-size: 14px;
         }
-        #importacao_eventos{
+
+        #importacao_eventos {
             font-size: 12.9px;
         }
     </style>
@@ -265,7 +266,7 @@
 
 
                 <div class="card">
-                    <div class="col-7" style="display: inline; margin-left: 10px; margin-top: 3px;">
+                    <div class="col-12" style="display: inline; margin-left: 45px; margin-top: 3px;">
                         <ul id="nav-ul">
                             <li role="presentation" class="tab-select act" id="pagina_cad">
                                 <a href="#pagina_cadastro" data-toggle="tab" onclick="alterTab(0)">
@@ -297,6 +298,56 @@
                                 </a>
                                 <div style="display: inline-block; position: relative; top: 4px;">
                                     <span class="material-symbols-outlined" style="font-size: 14pt;">autopay</span>
+                                </div>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_integracao_mgf">
+                                <a href="#pagina_outros" data-toggle="tab" onclick="alterTab(4)">
+                                    Outros
+                                </a>
+                                <div style="display: inline-block; position: relative; top: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 14pt;">
+                                        devices_other
+                                    </span>
+                                </div>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_integracao_mgf">
+                                <a href="#pagina_outros" data-toggle="tab" onclick="alterTab(5)">
+                                    Juridico
+                                </a>
+                                <div style="display: inline-block; position: relative; top: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 14pt;">
+                                        gavel
+                                    </span>
+                                </div>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_integracao_mgf">
+                                <a href="#pagina_outros" data-toggle="tab" onclick="alterTab(6)">
+                                    Documentos
+                                </a>
+                                <div style="display: inline-block; position: relative; top: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 14pt;">
+                                        description
+                                    </span>
+                                </div>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_integracao_mgf">
+                                <a href="#pagina_outros" data-toggle="tab" onclick="alterTab(7)">
+                                    Tipos de Anexo
+                                </a>
+                                <div style="display: inline-block; position: relative; top: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 14pt;">
+                                        attach_file
+                                    </span>
+                                </div>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_integracao_mgf">
+                                <a href="#pagina_outros" data-toggle="tab" onclick="alterTab(8)">
+                                    Regional - Filial
+                                </a>
+                                <div style="display: inline-block; position: relative; top: 4px;">
+                                    <span class="material-symbols-outlined" style="font-size: 14pt;">
+                                        groups_2
+                                        </span>
                                 </div>
                             </li>
                         </ul>
@@ -675,6 +726,126 @@
                                 onclick="document.getElementById('destino_banco').checked = 1">Banco</label>
                         </div>
                     </div>
+                    <!-- fim integração MGF -->
+                    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    <!-- Inicio Outros -->
+                    <div class="tab-pane row" id="pagina_outros" style="display: none;">
+                        <div class="col-12">
+                            <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="tokenPrismatec"
+                                    id="token_prismatec" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Token Clente (Prismatec)</label>
+                            </div>
+                            <div class="div-input form-floating mb-3 m-l-10 col-4" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="tokenWhatsapp"
+                                    id="token_whatsapp" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Token WhatsApp (SIGA)</label>
+                            </div>
+                            <div class="div-input form-floating mb-3 m-l-10 col-4" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="tokenAssitance"
+                                    id="token_assitance" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Token (Assistence Integração
+                                    Financeiro)</label>
+                            </div>
+                        </div>
+                        <div class="col-12 justify-content-center" style="margin: 0 auto;">
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <select class="form-select" aria-label="Default select example" id="cronograma_inicial"
+                                    style="display: inline-block;">
+                                    <option value="" selected>Cronograma Inicial</option>
+                                </select>
+                            </div>
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <select class="form-select" aria-label="Default select example"
+                                    id="cronograma_complementar" style="display: inline-block;">
+                                    <option value="" selected>Cronograma Complementar</option>
+                                </select>
+                            </div>
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <select class="form-select" aria-label="Default select example"
+                                    id="cronograma_sindicancia" style="display: inline-block;">
+                                    <option value="" selected>Cronograma Sindicância</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 justify-content-center" style="margin: 0 auto;">
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <label for="">Cálculo do Cronograma Inicial</label>
+                                <input type="radio" name="cci" style="display: inline-block;" id="ci_dias_uteis"><label
+                                    for="" onclick="toggleCheck('ci_dias_uteis')"
+                                    style="display: inline-block; margin-left: -20px;">Dias Úteis</label><br>
+                                <input type="radio" name="cci" style="display: inline-block;"
+                                    id="ci_dias_corridos"><label for="" onclick="toggleCheck('ci_dias_corridos')"
+                                    style="display: inline-block; margin-left: -20px;">Dias Corridos</label>
+                            </div>
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <label for="">Cálculo do Cronograma Complementar</label>
+                                <input type="radio" name="ccc" style="display: inline-block;" id="cc_dias_uteis"><label
+                                    for="" onclick="toggleCheck('cc_dias_uteis')"
+                                    style="display: inline-block; margin-left: -20px;">Dias Úteis</label><br>
+                                <input type="radio" name="ccc" style="display: inline-block;"
+                                    id="cc_dias_corridos"><label for="" onclick="toggleCheck('cc_dias_corridos')"
+                                    style="display: inline-block; margin-left: -20px;">Dias Corridos</label>
+                            </div>
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <label for="">Cálculo do Cronograma Sindicância</label>
+                                <input type="radio" name="ccs" style="display: inline-block;" id="cs_dias_uteis"><label
+                                    for="" onclick="toggleCheck('cs_dias_uteis')"
+                                    style="display: inline-block; margin-left: -20px;">Dias Úteis</label><br>
+                                <input type="radio" name="ccs" style="display: inline-block;"
+                                    id="cs_dias_corridos"><label for="" onclick="toggleCheck('cs_dias_corridos')"
+                                    style="display: inline-block; margin-left: -20px;">Dias Corridos</label>
+                            </div>
+                        </div>
+                        <div class="div-input mb-3 m-l-10 col-12 justify-content-center" style="display: inline-block;">
+                            <textarea name="" id="texto_whatsapp" cols="159" rows="5"></textarea>
+                        </div>
+                        <div class="col-12 justify-content-center">
+                            <div class="div-input form-floating mb-3 m-l-10 col-6" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="tokenAssitance"
+                                    id="token_assitance" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Consultor não notificado (WhatsApp)</label>
+                            </div>
+                        </div>
+                        <div class="col-12 justify-content-center">
+                            <div class="div-input mb-3 m-l-10 col-5" style="display: inline-block;">
+                                <div class="col-7" style="display: inline-block;">
+                                    <input type="checkbox" name="" id="habilitar_regulagem"
+                                        style="display: inline-block;"><label for=""
+                                        style="display: inline-block; margin-left: -20px;">Habilitar
+                                        Regulagem</label>
+                                </div>
+                                <div class="col-3" style="display: inline-block;">
+                                    <button class="btn btn-success">Abrir Check</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim outros -->
+                    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    <!-- Inicio juridico -->
+                    <div class="tab-pane row" id="pagina_integracao_mgf" style="display: none;">
+                        <!-- tabela juridico -->
+                    </div>
+                    <!-- fim juridico -->
+                    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    <!-- Inicio Documentos -->
+                    <div class="tab-pane row" id="pagina_integracao_mgf" style="display: none;">
+                        <!-- Tabela documentos -->
+                    </div>
+                    <!-- fim Documentos -->
+                    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    <!-- Inicio anexo -->
+                    <div class="tab-pane row" id="pagina_integracao_mgf" style="display: none;">
+                        <!-- Tabela anexos -->
+                    </div>
+                    <!-- fim anexo -->
+                    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+                    <!-- Inicio filial -->
+                    <div class="tab-pane row" id="pagina_integracao_mgf" style="display: none;">
+                        <!-- Tabela filial -->
+                    </div>
+                    <!-- fim filial -->
                 </div>
             </div>
         </div>
@@ -733,7 +904,7 @@
 
     <script>
         window.onload = () => {
-            alterTab(2);
+            alterTab(0);
             document.getElementById('upload-btn').style.display = 'none'
         }
 
