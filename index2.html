@@ -99,6 +99,13 @@
             color: black;
             text-decoration: none;
         }
+
+        #importacao_eventos option{
+            font-size: 14px;
+        }
+        #importacao_eventos{
+            font-size: 12.9px;
+        }
     </style>
     <script>
         function removerMascara(obj) {
@@ -261,7 +268,7 @@
                     <div class="col-7" style="display: inline; margin-left: 10px; margin-top: 3px;">
                         <ul id="nav-ul">
                             <li role="presentation" class="tab-select act" id="pagina_cad">
-                                <a href="#pagina_cadastro" data-toggle="tab" onclick="alterTab(0)" style="">
+                                <a href="#pagina_cadastro" data-toggle="tab" onclick="alterTab(0)">
                                     Cadastrar
                                 </a>
                                 <div style="display: inline-block; position: relative; top: 4px;">
@@ -428,32 +435,56 @@
                                 <i class="material-icons">file_upload</i>
                             </button>
                         </div>
-                        <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block; margin-top: 35px;">
+                        <div class="div-input mb-3 m-l-10 col-2"
+                            style="display: inline-block; margin-top: 35px; margin-left: -20px;">
                             <input type="checkbox" style="display: inline-block;" name="" id="desabilidata">
-                            <label for="" style="display: inline-block;">Desabilitar Empresa</label>
+                            <label for="" style="display: inline-block; margin-left: -20px;"
+                                onclick="toggleCheck('desabilidata')">Desabilitar Empresa</label>
                         </div>
-                        <div class="div-input mb-3 m-l-10 col-4" style="display: inline-block; margin-top: 35px;">
+                        <div class="div-input mb-3 m-l-10 col-4"
+                            style="display: inline-block; margin-top: 35px; margin-left: -50px;">
                             <input type="checkbox" style="display: inline-block;" name="" id="bloq_usuario_resp">
-                            <label for="" style="display: inline-block;">Bloquear alteração do usuário responsavel da
+                            <label for="" style="display: inline-block; margin-left: -20px;"
+                                onclick="toggleCheck('bloq_usuario_resp')">Bloquear alteração do usuário responsavel da
                                 tarefa</label>
                         </div>
-                        <div class="div-input mb-3 col-3" style="display: inline-block; margin-top: 35px;">
-                            <select class="form-select" aria-label="Default select example" id="plano"
-                                style="display: inline-block;">
-                                <option value="" selected>Notificação</option>
-                                <option value="1">SMS</option>
-                                <option value="2">WhatsApp</option>
-                                <option value="3">WhatsApp + Consultores</option>
-                            </select>
+                        <div class="div-input mb-3 m-l-10 col-2"
+                            style="display: inline-block; margin-top: 0; margin-left: -40px;">
+                            <label for="" style="display: block; margin-left: -20px;">Criar Termo</label>
+                            <div style="margin-left: -10px;">
+                                <input type="radio" name="criarTempo" id="prencher_oficina"
+                                    style="display: inline-block;"><label for=""
+                                    onclick="document.getElementById('prencher_oficina').checked = 1"
+                                    style="display: inline-block; margin-left: -16px;">Ao
+                                    Preencher a Oficina</label><br>
+                                <input type="radio" name="criarTempo" id="apos_data_liberacao"
+                                    style="display: inline-block;"><label for=""
+                                    onclick="document.getElementById('apos_data_liberacao').checked = 1"
+                                    style="display: inline-block; padding: 0; margin-left: 10px;">Após a
+                                    Liberação do Veiculo</label>
+                            </div>
                         </div>
-                        <div class="div-input mb-3 m-l-10 col-4" style="display: inline-block; margin-top: 35px;">
-                            <input type="checkbox" style="display: inline-block;" name="" id="fornec_siga">
-                            <label for="" style="display: inline-block;">Marcar todos fornecedores SIGA na
-                                cotação</label>
-                        </div>
-                        <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block; margin-top: 35px;">
-                            <input type="checkbox" style="display: inline-block;" name="" id="tarefa_app">
-                            <label for="" style="display: inline-block;">Ver todas tarefas no APP</label>
+                        <div style="margin-top: -25px;">
+                            <div class="div-input mb-3 col-2" style="display: inline-block; margin-top: 35px;">
+                                <select class="form-select" aria-label="Default select example" id="plano"
+                                    style="display: inline-block;">
+                                    <option value="" selected>Notificação</option>
+                                    <option value="1">SMS</option>
+                                    <option value="2">WhatsApp</option>
+                                    <option value="3">WhatsApp + Consultores</option>
+                                </select>
+                            </div>
+                            <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block; margin-top: 35px;">
+                                <input type="checkbox" style="display: inline-block;" name="" id="fornec_siga">
+                                <label for="" style="display: inline-block; margin-left: -20px;"
+                                    onclick="toggleCheck('fornec_siga')">Marcar todos fornecedores SIGA na
+                                    cotação</label>
+                            </div>
+                            <div class="div-input mb-3 m-l-10 col-2" style="display: inline-block; margin-top: 35px;">
+                                <input type="checkbox" style="display: inline-block;" name="" id="tarefa_app">
+                                <label for="" style="display: inline-block; margin-left: -20px;"
+                                    onclick="toggleCheck('tarefa_app')">Ver todas tarefas no APP</label>
+                            </div>
                         </div>
                     </div>
                     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
@@ -496,28 +527,52 @@
                             <label for="" id="" style="width: 500px;">IDs dos Motivos (que serão importados)
                                 (NOT IN)</label>
                         </div>
-                        <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                        <div class="div-input mb-3 m-l-10 col-2" style="display: inline-block;">
                             <div class="div-input mb-3 m-l-10 col-11" style="display: inline-block;">
                                 <label for="" id="" style="width: 200px;">Serviço</label>
                                 <input type="radio" name="servico" id="ev_novo" style="display: inline-block;"><label
-                                    style="display: inline-block; margin-left: -20px;" for="">Evento Novo</label><br>
+                                    style="display: inline-block; margin-left: -20px;" for=""
+                                    onclick="document.getElementById('ev_novo').checked = 1">Evento Novo</label><br>
                                 <input type="radio" name="servico" id="ev_antigo" style="display: inline-block;"><label
-                                    style="display: inline-block; margin-left: -20px;" for="">Evento Antigo</label>
+                                    style="display: inline-block; margin-left: -20px;" for=""
+                                    onclick="document.getElementById('ev_antigo').checked = 1">Evento Antigo</label>
                             </div>
                             <div class="div-input mb-3 m-l-10 col-11" style="display: inline-block;">
-                                <input type="checkbox" name="" id="" style="display: inline-block;"><label for=""
-                                    style="display: inline-block; margin-left: -20px;">Integração On-Line</label>
+                                <input type="checkbox" name="" id="integracao_online_check"
+                                    style="display: inline-block;"><label for=""
+                                    style="display: inline-block; margin-left: -20px;"
+                                    onclick="toggleCheck('integracao_online_check')">Integração On-Line</label>
                             </div>
                             <div class="div-input mb-3 m-l-10 col-12" style="display: inline-block;">
                                 <label for="" id="" style="width: 200px;">Verificar a data do campo</label>
-                                <input type="radio" name="servico" id="ev_novo" style="display: inline-block;"><label
-                                    style="display: inline-block; margin-left: -20px;" for="">Data do Evento</label><br>
-                                <input type="radio" name="servico" id="ev_antigo" style="display: inline-block;"><label
-                                    style="display: inline-block; margin-left: -20px;" for="">Data do Cadastro</label>
+                                <input type="radio" name="verificarDataCampo" id="data_evento"
+                                    style="display: inline-block;"><label
+                                    style="display: inline-block; margin-left: -20px;" for=""
+                                    onclick="document.getElementById('data_evento').checked = 1">Data do
+                                    Evento</label><br>
+                                <input type="radio" name="verificarDataCampo" id="data_cadastro_integracao"
+                                    style="display: inline-block;"><label
+                                    style="display: inline-block; margin-left: -20px;" for=""
+                                    onclick="document.getElementById('data_cadastro_integracao').checked = 1">Data do
+                                    Cadastro</label>
                             </div>
                             <button class="btn btn-success">Importar Situações</button>
                         </div>
-                        <div class="div-input form-floating mb-3 m-l-10 col-7" style="display: inline-block;">
+                        <div class="div-input mb-3 m-l-10 col-2" style="display: inline-block; margin-left: -20px;">
+                            <!-- Tipo de importação -->
+                            <select class="form-select" aria-label="Default select example" id="importacao_eventos"
+                                style="display: inline-block;">
+                                <option value="" selected>Importação de Eventos</option>
+                                <option value="1">Assictance</option>
+                                <option value="2">SGA</option>
+                                <option value="3">N/A</option>
+                                <option value="4">UNIKAS</option>
+                                <option value="5">SEVEN</option>
+                                <option value="6">GENESIS</option>
+                                <option value="7">MINAS BRASIL</option>
+                            </select>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-6" style="display: inline-block;">
                             <!-- Tabelas -->
 
                         </div>
@@ -525,10 +580,99 @@
                     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
                     <!-- Integração MGF -->
                     <div class="tab-pane row" id="pagina_integracao_mgf" style="display: none;">
+                        <div class="col-12">
+                            <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="usuarioImportacao"
+                                    id="usuario_importacao" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Usuário</label>
+                            </div>
+                            <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="senhaImportacao"
+                                    id="senha_importacao" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Senha</label>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="col-12">
+                            <div class="div-input form-floating mb-3 m-l-10 col-5" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="tokenMGF"
+                                    id="token_mgf" placeholder=".">
+                                <label for="" id="" style="width: 400px;">Token</label>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <label for="" id="" style="width: 400px;">Caixa Local</label>
+                            <select class="form-select" aria-label="Default select example" id="caixa_local">
+                                <option value="" selected></option>
+                            </select>
+                        </div>
                         <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
-                            <input class="form-control" type="text" autocomplete="off" name="num" id="num"
-                                placeholder=".">
-                            <label for="" id="" style="width: 400px;">Usuário</label>
+                            <input class="form-control" type="text" autocomplete="off" name="codCaixaLocal"
+                                id="cod_caixa_local" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Código Caixa Local MGF</label>
+                        </div>
+                        <div class="div-input mb-3 m-l-10 col-2" style="display: inline-block;">
+                            <label for="" id="" style="width: 400px;">Banco</label>
+                            <select class="form-select" aria-label="Default select example" id="banco">
+                                <option value="" selected></option>
+                            </select>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-2" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="codigoBanco"
+                                id="cod_banco_mgf" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Código Banco MGF</label>
+                        </div>
+                        <!--  -->
+                        <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <label for="" id="" style="width: 400px;">De Para Boleto Pago</label>
+                            <select class="form-select" aria-label="Default select example" id="de_para_boleto_pago">
+                                <option value="" selected></option>
+                            </select>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="codPagoMGF"
+                                id="cod_pago_mgf" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Código Pago MGF</label>
+                        </div>
+                        <div class="div-input mb-3 m-l-10 col-2" style="display: inline-block;">
+                            <label for="" id="" style="width: 400px;">De Para Boleto em Aberto</label>
+                            <select class="form-select" aria-label="Default select example" id="de_para_boleto_aberto">
+                                <option value="" selected></option>
+                            </select>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-2" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="codAbertoMGF"
+                                id="cod_aberto_mgf" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Código Aberto MGF</label>
+                        </div>
+                        <!--  -->
+                        <div class="div-input mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <label for="" id="" style="width: 400px;">De Para Boleto Negado</label>
+                            <select class="form-select" aria-label="Default select example" id="de_para_boleto_negado">
+                                <option value="" selected></option>
+                            </select>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-3" style="display: inline-block;">
+                            <input class="form-control" type="text" autocomplete="off" name="codNegadoMGF"
+                                id="cod_negado_mgf" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Código Negado MGF</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 m-l-10 col-2" style="display: inline-block;">
+                            <input class="form-control" type="date" autocomplete="off" name="inicioImportação"
+                                id="inicio_importacao" placeholder=".">
+                            <label for="" id="" style="width: 400px;">Inicio Importação</label>
+                        </div>
+                        <div class="div-input mb-3 m-l-10 col-2" style="display: inline-block;">
+                            <label for="" id="" style="width: 400px;">Destino Padrão do Lançamento</label>
+                            <input type="radio" style="display: inline-block;" name="destinoPadraoLancamento"
+                                id="destino_caixa_local"><label for=""
+                                style="display: inline-block; margin-left: -15px;"
+                                onclick="document.getElementById('destino_caixa_local').checked = 1">Caixa
+                                Local</label><br>
+                            <input type="radio" style="display: inline-block;" name="destinoPadraoLancamento"
+                                id="destino_banco"><label for="" style="display: inline-block; margin-left: -15px;"
+                                onclick="document.getElementById('destino_banco').checked = 1">Banco</label>
                         </div>
                     </div>
                 </div>
@@ -589,7 +733,7 @@
 
     <script>
         window.onload = () => {
-            alterTab(3);
+            alterTab(2);
             document.getElementById('upload-btn').style.display = 'none'
         }
 
@@ -608,6 +752,13 @@
             }
             document.querySelectorAll('.tab-pane')[tab].style.display = ''
             document.querySelectorAll('.tab-select')[tab].classList.add('act')
+        }
+
+        function toggleCheck(id) {
+            if (document.getElementById(id).checked)
+                document.getElementById(id).checked = 0
+            else
+                document.getElementById(id).checked = 1
         }
     </script>
 
